@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website - ภาณุวิชญ์ ปิติ (บีม)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'Kanit', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10;
+            }
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: blob 8s infinite;
+        }
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(30px, 10px) scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    Panuwit.P <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Beam</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                    <a href="#home" class="hover:text-cyan-400 transition-colors relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="hover:text-cyan-400 transition-colors relative group">
+                        About Me
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#hobbies" class="hover:text-cyan-400 transition-colors relative group">
+                        My Hobbies
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:opacity-90 transition-all shadow-md hover:shadow-cyan-500/20">
+                        Contact Me
+                    </a>
+                </nav>
+                <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl transition-colors" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 px-4 py-4 space-y-3">
+            <a href="#home" class="mobile-link block py-2 px-3 rounded hover:bg-slate-800 transition-colors">Home</a>
+            <a href="#about" class="mobile-link block py-2 px-3 rounded hover:bg-slate-800 transition-colors">About Me</a>
+            <a href="#hobbies" class="mobile-link block py-2 px-3 rounded hover:bg-slate-800 transition-colors">My Hobbies</a>
+            <a href="#contact" class="mobile-link block py-2 px-3 rounded bg-blue-600 text-center font-semibold hover:bg-blue-500 transition-colors">Contact Me</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            <div class="blob w-96 h-96 bg-cyan-500 top-10 -left-48"></div>
+            <div class="blob w-80 h-80 bg-blue-600 bottom-10 -right-40" style="animation-delay: -4s;"></div>
+            <div class="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-cyan-400 text-sm font-medium animate-pulse-slow">
+                    👋 Welcome to My World!
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight text-shadow">
+                    สวัสดีครับผม <br>
+                    <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+                        ภาณุวิชญ์ ปิติ (บีม)
+                    </span>
+                </h1>
+                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    นักศึกษาวิทยาการคอมพิวเตอร์ ผู้ชื่นชอบในเทคโนโลยี การเขียนโค้ด การเล่นเกมอีสปอร์ต และกิจกรรมกลางแจ้ง
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                    <a href="#about" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/20 transition-all hover:-translate-y-0.5">
+                        รู้จักกันให้มากขึ้น <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold transition-all hover:-translate-y-0.5">
+                        ทักทายพูดคุย <i class="fa-solid fa-comments ml-1 text-cyan-400"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50 border-y border-slate-800">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold text-white">เกี่ยวกับตัวผม (About Me)</h2>
+                    <p class="text-sm text-slate-400">ข้อมูลส่วนตัวและสิ่งที่สนใจ</p>
+                    <div class="w-12 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-cyan-500/30 p-1.5 bg-slate-800 shadow-xl shadow-cyan-500/5 animate-float">
+                            <img src="https://i.postimg.cc/s1FCjFVm/d-sin-th-y-ngmi-di-t-ngch-x.jpg" 
+                                 alt="รูปโปรไฟล์ ภาณุวิชญ์ ปิติ" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none"></div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 space-y-6">
+                        <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-3 card-hover">
+                            <h3 class="text-xl font-bold text-cyan-400 flex items-center gap-2">
+                                <i class="fa-solid fa-user-gear"></i> ข้อมูลพื้นฐาน
+                            </h3>
+                            <ul class="space-y-2.5 text-sm text-slate-300">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400">•</span>
+                                    <span><strong class="text-white">ชื่อ-นามสกุล:</strong> ภาณุวิชญ์ ปิติ</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400">•</span>
+                                    <span><strong class="text-white">ชื่อเล่น:</strong> บีม (Beam)</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400">•</span>
+                                    <span><strong class="text-white">สาขาวิชา:</strong> วิทยาการคอมพิวเตอร์</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400">•</span>
+                                    <span><strong class="text-white">สีที่ชอบ:</strong> น้ำเงินเข้ม</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400">•</span>
+                                    <span><strong class="text-white">อาหารที่ชอบ:</strong> ชาบู, กะเพราไข่ดาว, อาหารใต้รสจัดจ้าน</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 space-y-2 card-hover">
+                            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">คติประจำใจ</h3>
+                            <p class="text-lg font-medium text-slate-100 italic">
+                                "เรียนรู้ ไม่หยุดพัฒนา และสนุกกับทุกช่วงเวลา"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-white text-center md:text-left">สิ่งที่สนใจ & ทักษะหลัก</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-amber-500/50">
+                            <i class="fa-brands fa-python text-amber-400 text-lg block mb-1"></i> Python
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-blue-500/50">
+                            <i class="fa-solid fa-chart-line text-blue-400 text-lg block mb-1"></i> R Language
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-pink-500/50">
+                            <i class="fa-brands fa-figma text-pink-400 text-lg block mb-1"></i> Figma Design
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-purple-500/50">
+                            <i class="fa-solid fa-gamepad text-purple-400 text-lg block mb-1"></i> eSports Game
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-emerald-500/50">
+                            <i class="fa-solid fa-fish text-emerald-400 text-lg block mb-1"></i> ตกปลาชะโด
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-200 card-hover hover:border-orange-500/50">
+                            <i class="fa-solid fa-volleyball text-orange-400 text-lg block mb-1"></i> กีฬา
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold text-white">งานอดิเรก (My Hobbies)</h2>
+                    <p class="text-sm text-slate-400">กิจกรรมที่ผมชอบทำในเวลาว่าง</p>
+                    <div class="w-12 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/5 group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=400&fit=crop" 
+                                 alt="ตกปลาชะโด" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-fish text-emerald-400"></i> ตกปลาชะโดด้วยเหยื่อปลอม
+                            </h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                ฝึกสมาธิและความอดทน ได้ออกไปสัมผัสธรรมชาติ และท้าทายความตื่นเต้นเมื่อต่อสู้กับปลาตัวใหญ่
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/5 group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop" 
+                                 alt="เล่นเกมคอมพิวเตอร์" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-gamepad text-purple-400"></i> เล่นเกมคอมพิวเตอร์
+                            </h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                ผ่อนคลายความเครียด ฝึกการทำงานเป็นทีม และการวางแผนแก้ปัญหาร่วมกับเพื่อนๆ
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/5 group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.postimg.cc/J7Ynwtj4/IMG-0360.jpg" 
+                                 alt="เล่นกีฬา" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-volleyball text-orange-400"></i> เล่นกีฬา
+                            </h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                ออกกำลังกาย สร้างความสนิทสนม เปตองฝึกการวางแผน วอลเลย์บอลฝึกความคล่องตัว
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/5 group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop" 
+                                 alt="ออกแบบ UI/UX" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-pen-ruler text-blue-400"></i> ออกแบบ UI/UX
+                            </h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                แปลงไอเดียให้เป็นหน้าตาโปรแกรมสวยงาม แล้วลองเขียนโค้ดจริงต่อ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50 border-t border-slate-800">
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold text-white">ช่องทางติดต่อ (Contact Me)</h2>
+                    <p class="text-sm text-slate-400">มาทำความรู้จัก หรือทักทายพูดคุยกันได้เลย!</p>
+                    <div class="w-12 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 space-y-4 card-hover">
+                            <h3 class="font-bold text-white text-lg"><i class="fa-solid fa-envelope text-cyan-400 mr-2"></i> อีเมล</h3>
+                            <a href="mailto:ydchaipiti@gmail.com" class="text-sm text-cyan-400 hover:underline block font-mono transition-colors">
+                                ydchaipiti@gmail.com
+                            </a>
+                        </div>
+                        <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 space-y-4 card-hover">
+                            <h3 class="font-bold text-white text-lg"><i class="fa-solid fa-share-nodes text-purple-400 mr-2"></i> โซเชียลมีเดีย</h3>
+                            <div class="grid grid-cols-1 gap-3 text-sm">
+                                <a href="#" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-700 text-slate-200 transition-colors flex items-center gap-2 group">
+                                    <i class="fa-brands fa-facebook text-blue-500 group-hover:scale-110 transition-transform text-lg"></i>
+                                    <span class="font-medium">ภาณุวิชญ์ ฯ.</span>
+                                </a>
+                                <a href="#" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-700 text-slate-200 transition-colors flex items-center gap-2 group">
+                                    <i class="fa-brands fa-instagram text-pink-500 group-hover:scale-110 transition-transform text-lg"></i>
+                                    <span class="font-medium">ภาณุวิชญ์ ฯ.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700/80 space-y-4 card-hover">
+                        <h3 class="font-bold text-white text-lg"><i class="fa-solid fa-paper-plane text-cyan-400 mr-2"></i> ฝากข้อความ</h3>
+                        <div id="alert-msg" class="hidden p-3 rounded-lg bg-emerald-500/20 text-emerald-300 text-sm border border-emerald-500/30 transition-all duration-300">
+                            ✅ ส่งข้อความเรียบร้อยแล้วครับ! ขอบคุณครับ 😊
+                        </div>
+                        <form id="contact-form" class="space-y-3">
+                            <div>
+                                <label for="name" class="block text-xs font-medium text-slate-300 mb-1">ชื่อของคุณ</label>
+                                <input type="text" id="name" required placeholder="กรุณาระบุชื่อ" 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-medium text-slate-300 mb-1">อีเมลของคุณ</label>
+                                <input type="email" id="email" required placeholder="example@email.com" 
+                                       class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label for="msg" class="block text-xs font-medium text-slate-300 mb-1">ข้อความ</label>
+                                <textarea id="msg" rows="3" required placeholder="พิมพ์ข้อความที่นี่..." 
+                                          class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold text-sm hover:opacity-90 transition-all">
+                                <i class="fa-solid fa-paper-plane mr-1"></i> ส่งข้อความ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 border-t border-slate-800 text-center text-xs text-slate-400">
+        <p>© 2026 ภาณุวิชญ์ ปิติ (บีม) - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-xmark');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.add('fa-bars');
+                menuIcon.classList.remove('fa-xmark');
+            });
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => observer.observe(section));
+
+        const contactForm = document.getElementById('contact-form');
+        const alertMsg = document.getElementById('alert-msg');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alertMsg.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => {
+                alertMsg.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
